@@ -24,12 +24,12 @@ public class Conexion {
     }
 
     public static Connection get_connetion(){
-        System.out.println("Antes de pedir: " + connect);
+        System.out.println("PreConexion: " + connect);
 
         if (connect == null){
             new Conexion();
         }
-        System.out.printf("Cuando la llamo: "+connect);
+        System.out.printf("InConexion: "+connect);
         return  connect;
 
     }
@@ -37,7 +37,7 @@ public class Conexion {
     public static void close_connection(){
 
         try {
-            System.out.println("Antes de cerrar: " + connect);
+            System.out.println("DataBase: " + connect);
             if(connect != null) {
                 connect.close();
                 connect = null;
@@ -45,7 +45,7 @@ public class Conexion {
         } catch (Exception e) {
             System.out.println(e);;
         }
-        System.out.println("Después de cerrar: "+ connect);
+        System.out.println("PostConexion: "+ connect);
 
     }
 }

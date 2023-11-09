@@ -52,7 +52,7 @@ public class PedidoDao {
         ResultSet rs = null;
 
         try (Connection connect = Conexion.get_connetion()) {
-            String query = "SELECT * FROM pedido where pedido.idPedido = ?";
+            String query = "SELECT * FROM pedido where pedido.idPedido = idPedido";
 
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();
@@ -123,11 +123,6 @@ public class PedidoDao {
         }
 
     }
-
-
-
-
-
 
     public static void actualizarPedidoDB(Pedido update) {
         try(Connection connect = Conexion.get_connetion()){

@@ -6,6 +6,7 @@ import co.com.view.MenuAdministrador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -72,21 +73,40 @@ public class AdministradorDao {
     }
 
     public static void iniciarSesionDB(){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection connect = Conexion.get_connetion()) {
+            String query = "SELECT * FROM administrador where administrador.email = email";
+
+            ps = connect.prepareStatement(query);
+            rs = ps.executeQuery();
 
 
-        Administrador registro = new Administrador();
+            Administrador registro = new Administrador();
 
         System.out.println("Ingrese su email: ");
         String email = sc.nextLine();
         System.out.println("Ingrese su contraseña: ");
         String clave = sc.nextLine();
 
-        if (email.equals(registro.getEmail()) && clave.equals(registro.getClave())) {
+        while (rs.next()) {
+        if (email.equals(rs.getString("email")) && clave.equals(rs.getString("clave"))) {
             System.out.println("Bienvenido");
             MenuAdministrador.menuAdmin();
         } else {
             System.out.println("Credenciales no válidas");
         }
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println("No se recuperaron registros ");
+            System.out.println(e);
+        } finally {
+            Conexion.close_connection();
+        }
 
     }
+
 }
