@@ -36,16 +36,15 @@ public class PedidoPdf {
                 while (rs.next()) {
                     System.out.println("\n");
                     document.add(new Paragraph("Pedido ID: " + rs.getInt("idPedido")));
-                    /*System.out.println("Id pedido: " + rs.getInt("idPedido"));
-                    System.out.println("Cédula Cliente: " + rs.getInt("cedulaCliente"));
-                    System.out.println("Nombre Cliente: " + rs.getString("nombreCliente"));
-                    System.out.println("Apellido Cliente: " + rs.getString("apellidoCliente"));
-                    System.out.println("Direccion Cliente: " + rs.getString("direccionCliente"));
-                    System.out.println("Id Producto: " +rs.getInt("idProducto"));
-                    System.out.println("Cantidad del producto: " + rs.getInt("cantidadProducto"));
-                    System.out.println("Fecha Actual: " + rs.getDate("fechaPedido"));
-                    System.out.println("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
-                    System.out.println("Valor Total Pedido: " + rs.getDouble("valorTotalPedido"));*/
+                    document.add(new Paragraph("Cédula Cliente: " + rs.getInt("cedulaCliente")));
+                    document.add(new Paragraph("Nombre Cliente: " + rs.getString("nombreCliente")));
+                    document.add(new Paragraph("Apellido Cliente: " + rs.getString("apellidoCliente")));
+                    document.add(new Paragraph("Direccion Cliente: " + rs.getString("direccionCliente")));
+                    document.add(new Paragraph("Id Producto: " +rs.getInt("idProducto")));
+                    document.add(new Paragraph("Cantidad del producto: " + rs.getInt("cantidadProducto")));
+                    document.add(new Paragraph("Fecha Actual: " + rs.getDate("fechaPedido")));
+                    document.add(new Paragraph("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO"));
+                    document.add(new Paragraph("Valor Total Pedido: " + rs.getDouble("valorTotalPedido")));
 
 
                 }
@@ -58,17 +57,6 @@ public class PedidoPdf {
                 Conexion.close_connection();
             }
 
-
-            /*// Agregar contenido al PDF
-            document.add(new Paragraph("Pedido ID: " + pedido.getIdPedido()));
-            document.add(new Paragraph("Cédula Cliente: " + pedido.getCedulaCliente()));
-            document.add(new Paragraph("Nombre Cliente: " + pedido.getNombreCliente()));
-            document.add(new Paragraph("Apellido Cliente: " + pedido.getApellidoCliente()));
-            document.add(new Paragraph("Dirección Cliente: " + pedido.getDireccionCliente()));
-            document.add(new Paragraph("Cantidad del producto: " + pedido.getCantidadProducto()));
-            document.add(new Paragraph("Fecha del Pedido: " + pedido.getFechaPedido()));
-            document.add(new Paragraph("Valor Total Pedido: " + pedido.getValorTotalPedido()));*/
-
             document.close();
 
             System.out.println("PDF generado correctamente en: " + rutaArchivo);
@@ -78,8 +66,8 @@ public class PedidoPdf {
     }
 
     public static void main(String[] args) {
-        // Ejemplo de uso
-        Pedido pedido = new Pedido(); // Aquí debes tener tu objeto Pedido con los datos necesarios
+
+        Pedido pedido = new Pedido();
         String rutaArchivo = "D:/pedido.pdf"; // Ruta donde se guardará el archivo PDF
         generarPdf(pedido, rutaArchivo);
     }
