@@ -12,24 +12,41 @@ public class ProductoService {
 
     public  static void crearProducto(){
 
-        System.out.println("Ingrese el nombre del producto: " );
+        System.out.println("Ingrese Id Producto: ");
+        int idProducto = sc.nextInt();
+        sc.skip("\n");
+        System.out.println("Ingrese el nombre del producto: \n" );
         String nombre = sc.nextLine();
-        System.out.println("Ingrese la descripcion del producto: ");
-        String descripcion =sc. nextLine();
-        System.out.println("Ingrese el precio venta del producto: ");
+        System.out.println("Ingrese la descripcion del producto: \n");
+        String descripcion = sc.nextLine();
+        System.out.print("Ingrese el precio venta del producto: \n");
         double precio =sc.nextDouble();
-        System.out.println("Ingrese el precio costo del producto: ");
+        System.out.print("Ingrese el precio costo del producto: \n");
         double costo =sc.nextDouble();
-        System.out.println("Ingrese la cantidad de producto: ");
+        System.out.print("Ingrese la cantidad de producto: \n");
         int existenciaProducto =sc.nextInt();
 
 
+        double ganancia = precio - costo;
+        System.out.print("ver ganancia producto: \n" + ganancia);
+
+
+
+       /* ProductoDao productoDao = new ProductoDao();
+        ProductoDao.verGananciaProductoDB();
+        System.out.println(verGananciaProducto());*/
+
+
+
+
         Producto registro = new Producto();
+        registro.setIdProducto(idProducto);
         registro.setNombreProducto(nombre);
         registro.setDescripcionProducto(descripcion);
         registro.setPrecioVentaProducto(precio);
         registro.setPrecioCostoProducto(costo);
         registro.setExistenciaProducto(existenciaProducto);
+        registro.setGananciaProducto(ganancia);
 
         ProductoDao.crearProductoDB(registro);
     }
@@ -129,9 +146,10 @@ public class ProductoService {
 
     }
 
-    public  static  void verGananciaProducto(){
+   public  static double verGananciaProducto(){
 
         ProductoDao.verGananciaProductoDB();
 
+        return 0;
     }
 }

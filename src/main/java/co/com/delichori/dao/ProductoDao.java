@@ -19,7 +19,7 @@ public class ProductoDao {
 
             try {
 
-                String query = "INSERT INTO producto(idProducto,nombreProducto,descripcionProducto,precioCosto,precioVenta,existenciaProducto)VALUES(?,?,?,?,?,?)";
+                String query = "INSERT INTO producto(idProducto,nombreProducto,descripcionProducto,precioCosto,precioVenta,gananciaProducto, existenciaProducto)VALUES(?,?,?,?,?,?,?)";
 
                 ps = conexion.prepareStatement(query);
 
@@ -29,6 +29,7 @@ public class ProductoDao {
                 ps.setDouble(4,registro.getPrecioVentaProducto());
                 ps.setDouble(5,registro.getPrecioCostoProducto());
                 ps.setDouble(6, registro.getExistenciaProducto());
+                ps.setDouble(7, registro.getGananciaProducto());
 
                 ps.executeUpdate(); // para insert delete update
 

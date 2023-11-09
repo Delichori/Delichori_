@@ -23,9 +23,11 @@ public class PedidoDao {
                 ps.setString(2, registro.getNombreCliente());
                 ps.setString(3, registro.getApellidoCliente());
                 ps.setString(4, registro.getDireccionCliente());
-                ps.setInt(5, registro.getCantidadProducto());
-                ps.setDate(6, Date.valueOf(registro.getFechaPedido()));
-                ps.setDouble(7, registro.getValorTotalPedido());
+                ps.setInt(5, registro.getIdProducto());
+                ps.setString(6, registro.getEstadoPedido());
+                ps.setInt(7,registro.getCantidadProducto());
+                ps.setDate(8, Date.valueOf(registro.getFechaPedido()));
+                ps.setDouble(9, registro.getValorTotalPedido());
 
                 ps.executeUpdate();
 
@@ -59,12 +61,53 @@ public class PedidoDao {
             while (rs.next()) {
                 System.out.println("\n");
                 System.out.println("Id pedido: " + rs.getInt("idPedido"));
-                System.out.println("Estado del Pedido: " + rs.getString("EstadoPedido"));
+
                 System.out.println("Cédula Cliente: " + rs.getInt("cedulaCliente"));
                 System.out.println("Nombre Cliente: " + rs.getString("nombreCliente"));
                 System.out.println("Apellido Cliente: " + rs.getString("apellidoCliente"));
                 System.out.println("Direccion Cliente: " + rs.getString("direccionCliente"));
-                System.out.println("Cantidad del producto: " + rs.getInt("CantidadProducto"));
+                System.out.println("Id Producto: " +rs.getInt("idProducto"));
+                System.out.println("Estado del Pedido: " + rs.getString("estadoPedido"));
+                System.out.println("Cantidad del producto: " + rs.getInt("cantidadProducto"));
+                System.out.println("Fecha Actual: " + rs.getDate("fechaPedido"));
+                System.out.println("Valor Total Pedido: " + rs.getDouble("valorTotalPedido"));
+
+
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println("No se recuperaron registros ");
+            System.out.println(e);
+        } finally {
+            Conexion.close_connection();
+        }
+
+    }
+
+
+    public static void verPedidoclienteDB(int idPedido) {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection connect = Conexion.get_connetion()) {
+            String query = "SELECT FROM pedido where pedido.idPedido = ?";
+
+            ps = connect.prepareStatement(query);
+            rs = ps.executeQuery();
+
+
+            while (rs.next()) {
+                System.out.println("\n");
+                System.out.println("Id pedido: " + rs.getInt("idPedido"));
+
+                System.out.println("Cédula Cliente: " + rs.getInt("cedulaCliente"));
+                System.out.println("Nombre Cliente: " + rs.getString("nombreCliente"));
+                System.out.println("Apellido Cliente: " + rs.getString("apellidoCliente"));
+                System.out.println("Direccion Cliente: " + rs.getString("direccionCliente"));
+                System.out.println("Id Producto: " +rs.getInt("idProducto"));
+                System.out.println("Cantidad del producto: " + rs.getInt("cantidadProducto"));
                 System.out.println("Fecha Actual: " + rs.getDate("fechaPedido"));
                 System.out.println("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
                 System.out.println("Valor Total Pedido: " + rs.getDouble("valorTotalPedido"));
@@ -81,6 +124,10 @@ public class PedidoDao {
         }
 
     }
+
+
+
+
 
 
     public static void actualizarPedidoDB(Pedido update) {

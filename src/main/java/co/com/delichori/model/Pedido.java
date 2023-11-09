@@ -10,31 +10,33 @@ public class Pedido {
     private String nombreCliente;
     private String apellidoCliente;
     private String direccionCliente;
+    private int idProducto;
     private String estadoPedido;
     private int cantidadProducto;
-    Producto producto;
     private LocalDate fechaPedido;
     private double valorTotalPedido;
     private int opc;
+
+    Producto producto;
+
 
     public Pedido() {
 
     }
 
-    public Pedido(int idPedido, int cedulaCliente, String nombreCliente, String apellidoCliente, String direccionCliente, String estadoPedido, int cantidadProducto, LocalDate fechaPedido, double valorTotalPedido, int opc) {
+    public Pedido(int idPedido, int cedulaCliente, String nombreCliente, String apellidoCliente, String direccionCliente, int idProducto, String estadoPedido, int cantidadProducto, LocalDate fechaPedido, double valorTotalPedido, int opc) {
         this.idPedido = idPedido;
         this.cedulaCliente = cedulaCliente;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
         this.direccionCliente = direccionCliente;
+        this.idProducto = idProducto;
         this.estadoPedido = estadoPedido;
         this.cantidadProducto = cantidadProducto;
         this.fechaPedido = fechaPedido;
         this.valorTotalPedido = valorTotalPedido;
         this.opc = opc;
     }
-
-
 
     public int getIdPedido() {
         return idPedido;
@@ -76,20 +78,28 @@ public class Pedido {
         this.direccionCliente = direccionCliente;
     }
 
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public String getEstadoPedido() {
+        return estadoPedido;
+    }
+
+    public void setEstadoPedido(String estadoPedido) {
+        this.estadoPedido = estadoPedido;
+    }
+
     public int getCantidadProducto() {
         return cantidadProducto;
     }
 
     public void setCantidadProducto(int cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     public LocalDate getFechaPedido() {
@@ -114,13 +124,5 @@ public class Pedido {
 
     public void setOpc(int opc) {
         this.opc = opc;
-    }
-
-    public String getEstadoPedido() {
-        return estadoPedido;
-    }
-
-    public void setEstadoPedido(String estadoPedido) {
-        this.estadoPedido = estadoPedido;
     }
 }

@@ -30,15 +30,25 @@ public class PedidoService {
         System.out.println("Por favor ingrese dirección de entrega");
         String direccionCliente = sc.nextLine();
 
-        System.out.println("Digíte Id del producto: 1. CHORIZO TRADICIONAL,  2. CHORIZO PICANTE");
+        System.out.println("verá usted los productos ofrecidos por Delichori");
+        ProductoDao.verProductoDB();
+        System.out.println();
+
+
+        System.out.println("Digíte Id del producto que estás viendo SI CHORIZO TRADICIONAL, Ó CHORIZO PICANTE");
         int idProducto = sc.nextInt();
+        sc.skip("\n");
 
-        System.out.println("Ingrese cantidad producto");
+        System.out.println("Ingrese cantidad producto solicitado: ");
         int cantidad = sc.nextInt();
+        sc.skip("\n");
 
-        System.out.println("La fecha actual es: ");
+        System.out.println("La fecha actual es: \n");
         LocalDateTime fechaActual = LocalDateTime.now();
         System.out.println(fechaActual + "\n");
+
+        System.out.println("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
+
 
         double precioUnidad = 4000;
         double total = cantidad * precioUnidad;
@@ -47,10 +57,12 @@ public class PedidoService {
 
 
         Pedido registro = new Pedido();
+
         registro.setCedulaCliente(cedulaCliente);
         registro.setNombreCliente(nombreCliente);
         registro.setApellidoCliente(apellidoCliente);
         registro.setDireccionCliente(direccionCliente);
+        registro.setIdProducto(idProducto);
         registro.setCantidadProducto(cantidad);
         registro.setFechaPedido(LocalDate.from(fechaActual));
         registro.setValorTotalPedido(total);
@@ -75,21 +87,19 @@ public class PedidoService {
 
         Pedido update= new Pedido();
 
-        switch (opc){
-            case 1:
-                System.out.println("Actualizar Estado Pedido");
-                System.out.println("Ingrese el nuevo Estado del pedido: 'CONFIRMADO', 'DESPACHADO', 'PAGADO'. ");
-                String estado = sc.nextLine();
-                System.out.println("Indique el id del pedido a actualizar: ");
-                id = sc.nextInt();
-                opc = 1;
-                update.setOpc(opc);
-                update.setEstadoPedido(estado);
-                update.setIdPedido(id);
-                PedidoDao.actualizarPedidoDB(update);
-                break;
+        if (opc == 1) {
+            System.out.println("Actualizar Estado Pedido");
+            System.out.println("Ingrese el nuevo Estado del pedido: 'CONFIRMADO', 'DESPACHADO', 'PAGADO'. ");
+            String estado = sc.nextLine();
+            System.out.println("Indique el id del pedido a actualizar: ");
+            id = sc.nextInt();
+            opc = 1;
+            update.setOpc(opc);
+            update.setEstadoPedido(estado);
+            update.setIdPedido(id);
+            PedidoDao.actualizarPedidoDB(update);
 
-            default:
+        }else{
                 System.out.println("Seleccione una opción válida");
         }
     }

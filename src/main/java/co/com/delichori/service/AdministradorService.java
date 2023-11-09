@@ -14,15 +14,16 @@ public class AdministradorService {
 
         //SOLICITANDO LOS DATOS PARA EL REGISTRO
 
-        System.out.println("Ingrese el número de cédula: ");
+        System.out.println("Ingrese el número de cédula: \n");
         int cedula = sc.nextInt();
-        System.out.println("Ingrese el nombre: ");
+        sc.skip("\n");
+        System.out.println("Ingrese el nombre: \n");
         String nombre = sc.nextLine();
-        System.out.println("Ingrese el apellido: ");
+        System.out.println("Ingrese el apellido: \n");
         String apellido = sc.nextLine();
-        System.out.println("Ingrese email: ");
+        System.out.println("Ingrese email: \n");
         String email = sc.nextLine();
-        System.out.println("Ingrese la contraseña: ");
+        System.out.println("Ingrese la contraseña: \n");
         String clave = sc.nextLine();
 
         //ASIGNAR LOS DATOS INGRESADOS A LAS VARIABLES:
@@ -48,7 +49,7 @@ public class AdministradorService {
 
     public static void eliminarAministrador() {
 
-        System.out.println("Indique la cédula del administrador que desea eliminar");
+        System.out.println("Indique la cédula del administrador que desea eliminar: ");
         int cedulaAdministrador = sc.nextInt();
         AdministradorDao.eliminarAdministradorDB(cedulaAdministrador); //Manda a administradordao el id que se recibe aquí
 
