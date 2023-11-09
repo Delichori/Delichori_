@@ -1,5 +1,6 @@
 package co.com.view;
 
+import co.com.delichori.dao.PedidoDao;
 import co.com.delichori.service.PedidoService;
 import co.com.delichori.service.ProductoService;
 
@@ -20,7 +21,7 @@ public class MenuCliente {
                     "\n1. Ver productos " +
                     "\n2. Realizar pedido  " +
                     "\n3. Ver pedido" +
-                    "\n5. Salir");
+                    "\n4. Salir");
             int opc = sc.nextInt();
 
             switch (opc) {
@@ -34,8 +35,8 @@ public class MenuCliente {
                     break;
                 case 3:
                     System.out.println("Ver pedido");
-                    PedidoService.verPedido();
-                case 0:
+                    PedidoService.verPedidoCliente();
+                case 4:
                     System.out.println("Salir");
                     init = 0;
                     break;

@@ -15,7 +15,7 @@ public class PedidoDao {
             PreparedStatement ps = null;
 
             try {
-                String query = "INSERT INTO pedido(cedulaCliente, nombreCliente, apellidoCliente, direccionCliente, cantidadProducto, fechaPedido, valorTotalPedido) VALUES (?,?,?,?,?,?,?)";
+                String query = "INSERT INTO pedido(cedulaCliente, nombreCliente, apellidoCliente, direccionCliente, idProducto, estadoPedido, cantidadProducto, fechaPedido, valorTotalPedido) VALUES (?,?,?,?,?,?,?,?,?)";
 
                 ps = conexion.prepareStatement(query);
 
@@ -52,7 +52,7 @@ public class PedidoDao {
         ResultSet rs = null;
 
         try (Connection connect = Conexion.get_connetion()) {
-            String query = "SELECT FROM pedido where pedido.idPedido = ?";
+            String query = "SELECT * FROM pedido where pedido.idPedido = ?";
 
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();
@@ -86,13 +86,13 @@ public class PedidoDao {
     }
 
 
-    public static void verPedidoclienteDB(int idPedido) {
+    public static void verPedidoClienteDB(int cedulaCliente) {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try (Connection connect = Conexion.get_connetion()) {
-            String query = "SELECT FROM pedido where pedido.idPedido = ?";
+            String query = "SELECT * FROM pedido where pedido.cedulaCliente = cedulaCliente";
 
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();
@@ -101,7 +101,6 @@ public class PedidoDao {
             while (rs.next()) {
                 System.out.println("\n");
                 System.out.println("Id pedido: " + rs.getInt("idPedido"));
-
                 System.out.println("Cédula Cliente: " + rs.getInt("cedulaCliente"));
                 System.out.println("Nombre Cliente: " + rs.getString("nombreCliente"));
                 System.out.println("Apellido Cliente: " + rs.getString("apellidoCliente"));

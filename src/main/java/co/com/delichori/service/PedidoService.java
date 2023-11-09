@@ -73,10 +73,19 @@ public class PedidoService {
 
     public static void verPedido() {
 
-        System.out.println("Indique el id del pedido: ");
+        System.out.println("Digíte Id Pedido: ");
         int idPedido = sc.nextInt();
         PedidoDao.verPedidoDB(idPedido);
     }
+
+    public static void verPedidoCliente() {
+
+        System.out.println("Digíte su cédula: ");
+        int cedulaCliente = sc.nextInt();
+        PedidoDao.verPedidoClienteDB(cedulaCliente);
+    }
+
+
 
     public static void actualizarPedido() {
         System.out.println("Indique para modificar: 1.Estado Pedido ");
