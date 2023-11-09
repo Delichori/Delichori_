@@ -6,7 +6,7 @@ import co.com.delichori.service.ProductoService;
 
 import java.util.Scanner;
 
-public class MenuAdinistrador {
+public class MenuAdministrador {
 
     static Scanner sc = new Scanner(System.in);
 

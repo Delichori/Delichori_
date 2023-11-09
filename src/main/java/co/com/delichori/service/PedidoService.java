@@ -36,14 +36,14 @@ public class PedidoService {
         System.out.println("Ingrese cantidad producto");
         int cantidad = sc.nextInt();
 
-        System.out.println("La fecha actual es:");
+        System.out.println("La fecha actual es: ");
         LocalDateTime fechaActual = LocalDateTime.now();
-        System.out.println(fechaActual);
+        System.out.println(fechaActual + "\n");
 
         double precioUnidad = 4000;
         double total = cantidad * precioUnidad;
 
-        System.out.println("El valor Total del Pedido es: "+total);
+        System.out.println("El valor Total del Pedido es: \n"+total+ "\n");
 
 
         Pedido registro = new Pedido();

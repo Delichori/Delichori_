@@ -2,7 +2,7 @@ package co.com.delichori.dao;
 
 import co.com.delichori.conexion.Conexion;
 import co.com.delichori.model.Administrador;
-import co.com.view.MenuAdinistrador;
+import co.com.view.MenuAdministrador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,7 +83,7 @@ public class AdministradorDao {
 
         if (email.equals(registro.getEmail()) && clave.equals(registro.getClave())) {
             System.out.println("Bienvenido");
-            MenuAdinistrador.menuAdmin();
+            MenuAdministrador.menuAdmin();
         } else {
             System.out.println("Credenciales no válidas");
         }
