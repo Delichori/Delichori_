@@ -92,7 +92,7 @@ public class PedidoDao {
         ResultSet rs = null;
 
         try (Connection connect = Conexion.get_connetion()) {
-            String query = "SELECT * FROM pedido where pedido.cedulaCliente = cedulaCliente";
+            String query = "SELECT * FROM pedido where pedido.cedulaCliente = ?";
 
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();

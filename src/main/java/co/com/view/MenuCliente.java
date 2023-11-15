@@ -36,6 +36,7 @@ public class MenuCliente {
                 case 3:
                     System.out.println("Ver pedido");
                     PedidoService.verPedidoCliente();
+                    break;
                 case 4:
                     System.out.println("Salir");
                     init = 0;
