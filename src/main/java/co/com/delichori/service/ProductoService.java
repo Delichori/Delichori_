@@ -63,7 +63,7 @@ public class ProductoService {
         int opc = sc.nextInt();
         sc.skip("\n");
 
-        int id;
+        int idProducto;
 
         Producto update = new Producto(); //Instancia producto
 
@@ -73,11 +73,11 @@ public class ProductoService {
                 System.out.println("Ingrese el nuevo valor");
                 String nombre = sc.nextLine();
                 System.out.println("Indique el id del producto a actualizar: ");
-                id = sc.nextInt();
+                idProducto = sc.nextInt();
                 opc = 1;
                 update.setOpc(opc);
                 update.setNombreProducto(nombre);
-                update.setIdProducto(id);
+                update.setIdProducto(idProducto);
                 ProductoDao.actualizarProductoDB(update);
                 break;
 
@@ -86,11 +86,11 @@ public class ProductoService {
                 System.out.println("Ingrese el nuevo valor");
                 String descripcion = sc.nextLine();
                 System.out.println("Indique el id del producto a actualizar: ");
-                id = sc.nextInt();
+                idProducto = sc.nextInt();
                 opc = 2;
                 update.setOpc(opc);
                 update.setDescripcionProducto(descripcion);
-                update.setIdProducto(id);
+                update.setIdProducto(idProducto);
                 ProductoDao.actualizarProductoDB(update);
                 break;
 
@@ -99,11 +99,11 @@ public class ProductoService {
                 System.out.println("Ingrese el nuevo valor");
                 double precio = sc.nextDouble();
                 System.out.println("Indique el id del producto a actualizar: ");
-                id = sc.nextInt();
+                idProducto = sc.nextInt();
                 opc = 3;
                 update.setOpc(opc);
                 update.setPrecioVentaProducto(precio);
-                update.setIdProducto(id);
+                update.setIdProducto(idProducto);
                 ProductoDao.actualizarProductoDB(update);
                 break;
 
@@ -112,11 +112,11 @@ public class ProductoService {
                 System.out.println("Ingrese el nuevo valor");
                 double costo = sc.nextDouble();
                 System.out.println("Indique el id del producto a actualizar: ");
-                id = sc.nextInt();
+                idProducto = sc.nextInt();
                 opc = 4;
                 update.setOpc(opc);
                 update.setPrecioCostoProducto(costo);
-                update.setIdProducto(id);
+                update.setIdProducto(idProducto);
                 ProductoDao.actualizarProductoDB(update);
                 break;
 
@@ -125,11 +125,11 @@ public class ProductoService {
                 System.out.println("Ingrese el nuevo valor");
                 int existencia = sc.nextInt();
                 System.out.println("Indique el id del producto a actualizar: ");
-                id = sc.nextInt();
+                idProducto = sc.nextInt();
                 opc = 5;
                 update.setOpc(opc);
                 update.setExistenciaProducto(existencia);
-                update.setIdProducto(id);
+                update.setIdProducto(idProducto);
                 ProductoDao.actualizarProductoDB(update);
                 break;
 
@@ -146,10 +146,9 @@ public class ProductoService {
 
     }
 
-   public  static double verGananciaProducto(){
+   public static void verGananciaProducto() {
 
-        ProductoDao.verGananciaProductoDB();
+       ProductoDao.verGananciaProductoDB();
 
-        return 0;
-    }
+       }
 }

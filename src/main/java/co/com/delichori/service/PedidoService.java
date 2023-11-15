@@ -30,12 +30,12 @@ public class PedidoService {
         System.out.println("Por favor ingrese dirección de entrega");
         String direccionCliente = sc.nextLine();
 
-        System.out.println("verá usted los productos ofrecidos por Delichori");
+        System.out.println("Usted está viendo los productos ofrecidos por Delichori: ");
         ProductoDao.verProductoDB();
         System.out.println();
 
 
-        System.out.println("Digíte Id del producto que estás viendo SI CHORIZO TRADICIONAL, Ó CHORIZO PICANTE");
+        System.out.println("Digíte Id del producto deseas: ");
         int idProducto = sc.nextInt();
         sc.skip("\n");
 
@@ -47,7 +47,7 @@ public class PedidoService {
         LocalDateTime fechaActual = LocalDateTime.now();
         System.out.println(fechaActual + "\n");
 
-        System.out.println("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
+        System.out.println("\n SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
 
 
         double precioUnidad = 4000;

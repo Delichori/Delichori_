@@ -88,7 +88,7 @@ public class ProductoDao {
 
                 if (opc == 1) {
 
-                    String query = "UPDATE producto SET nombreProducto=? WHERE id = ?";
+                    String query = "UPDATE producto SET nombreProducto=? WHERE idProducto = ?";
 
                     ps = connect.prepareStatement(query);
                     ps.setString(1, update.getNombreProducto());
@@ -99,7 +99,7 @@ public class ProductoDao {
 
                 }else if (opc == 2){
 
-                    String query = "UPDATE producto SET descripcionProducto=? WHERE id = ?";
+                    String query = "UPDATE producto SET descripcionProducto=? WHERE idProducto = ?";
 
                     ps = connect.prepareStatement(query);
                     ps.setString(1, update.getDescripcionProducto());
@@ -110,7 +110,7 @@ public class ProductoDao {
 
                 }else if (opc ==3){
 
-                    String query = "UPDATE producto SET precioVenta=? WHERE id = ?";
+                    String query = "UPDATE producto SET precioVenta=? WHERE idProducto = ?";
 
                     ps = connect.prepareStatement(query);
                     ps.setDouble(1, update.getPrecioVentaProducto());
@@ -121,7 +121,7 @@ public class ProductoDao {
 
                 }else if (opc == 4){
 
-                    String query = "UPDATE producto SET precioCosto=? WHERE id = ?";
+                    String query = "UPDATE producto SET precioCosto=? WHERE idProducto = ?";
 
                     ps = connect.prepareStatement(query);
                     ps.setDouble(1, update.getPrecioCostoProducto());
@@ -132,7 +132,7 @@ public class ProductoDao {
 
                 }else if (opc ==5){
 
-                    String query = "UPDATE producto SET existenciaProducto=? WHERE id = ?";
+                    String query = "UPDATE producto SET existenciaProducto=? WHERE idProducto = ?";
 
                     ps = connect.prepareStatement(query);
                     ps.setDouble(1, update.getExistenciaProducto());
