@@ -52,7 +52,8 @@ public class PedidoDao {
         ResultSet rs = null;
 
         try (Connection connect = Conexion.get_connetion()) {
-            String query = "SELECT * FROM pedido where pedido.idPedido = idPedido";
+
+            String query =("select * from pedido where idPedido="+ idPedido);
 
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();
@@ -92,7 +93,8 @@ public class PedidoDao {
         ResultSet rs = null;
 
         try (Connection connect = Conexion.get_connetion()) {
-            String query = "SELECT * FROM pedido where pedido.cedulaCliente = ?";
+
+            String query =("select * from pedido where cedulaCliente="+ cedulaCliente);
 
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();
@@ -124,6 +126,8 @@ public class PedidoDao {
 
     }
 
+
+
     public static void actualizarPedidoDB(Pedido update) {
         try(Connection connect = Conexion.get_connetion()){
 
@@ -137,7 +141,7 @@ public class PedidoDao {
 
                 if (opc == 1) {
 
-                    String query = "UPDATE pedido SET estadoPedido=? WHERE id = ?";
+                    String query = "UPDATE pedido SET estadoPedido=? WHERE idPedido = ?";
 
                     ps = connect.prepareStatement(query);
                     ps.setString(1, update.getEstadoPedido());

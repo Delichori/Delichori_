@@ -1,8 +1,10 @@
 package co.com.delichori.service;
 
 import co.com.delichori.dao.PedidoDao;
+import co.com.delichori.dao.PedidoPdfDao;
 import co.com.delichori.dao.ProductoDao;
 import co.com.delichori.model.Pedido;
+
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -43,13 +45,11 @@ public class PedidoService {
         int cantidad = sc.nextInt();
         sc.skip("\n");
 
-        System.out.println("La fecha actual es: \n");
+        System.out.println("Fecha del Pedido: \n");
         LocalDateTime fechaActual = LocalDateTime.now();
         System.out.println(fechaActual + "\n");
 
         System.out.println("\n SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
-
-
         double precioUnidad = 4000;
         double total = cantidad * precioUnidad;
 
@@ -84,6 +84,12 @@ public class PedidoService {
         int cedulaCliente = sc.nextInt();
         PedidoDao.verPedidoClienteDB(cedulaCliente);
     }
+
+    /*public static void imprimirPedido(){
+        System.out.println("Digíte su cédula: ");
+        int cedulaCliente = sc.nextInt();
+        PedidoPdfDao.generarPdf("Pedido pedido", "String rutaArchivo", "int cedulaCliente");
+    }*/
 
 
 

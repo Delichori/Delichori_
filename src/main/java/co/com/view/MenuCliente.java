@@ -21,7 +21,8 @@ public class MenuCliente {
                     "\n1. Ver productos " +
                     "\n2. Realizar pedido  " +
                     "\n3. Ver pedido" +
-                    "\n4. Salir");
+                    "\n4. Imprimir pedido PDF" +
+                    "\n5. Salir");
             int opc = sc.nextInt();
 
             switch (opc) {
@@ -34,10 +35,14 @@ public class MenuCliente {
                     PedidoService.realizarPedido();
                     break;
                 case 3:
-                    System.out.println("Ver pedido");
+                    System.out.println("Ver pedido Cliente");
                     PedidoService.verPedidoCliente();
                     break;
-                case 4:
+                /*case 4:
+                    System.out.println("Imprimir PDF");
+                    PedidoService.imprimirPedido();
+                    break;*/
+                case 5:
                     System.out.println("Salir");
                     init = 0;
                     break;

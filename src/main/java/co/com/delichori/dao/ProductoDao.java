@@ -203,8 +203,9 @@ public class ProductoDao {
                 System.out.println("Precio venta del producto: " + rs.getDouble("precioVenta"));
                 System.out.println("Precio costo del producto: " + rs.getDouble("precioCosto"));
 
-                double gananciaProducto = ganancia.getPrecioVentaProducto() - ganancia.getPrecioCostoProducto();
+                double gananciaProducto = (ganancia.getPrecioVentaProducto() - ganancia.getPrecioCostoProducto());
                 ganancia.setGananciaProducto(gananciaProducto);
+
                 System.out.println("La ganancia del producto es: " + gananciaProducto);
 
             }

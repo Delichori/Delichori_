@@ -16,19 +16,17 @@ public class ProductoService {
         int idProducto = sc.nextInt();
         sc.skip("\n");
         System.out.println("Ingrese el nombre del producto: \n" );
-        String nombre = sc.nextLine();
+        String nombreProducto = sc.nextLine();
         System.out.println("Ingrese la descripcion del producto: \n");
-        String descripcion = sc.nextLine();
-        System.out.print("Ingrese el precio venta del producto: \n");
-        double precio =sc.nextDouble();
+        String descripcionProducto = sc.nextLine();
         System.out.print("Ingrese el precio costo del producto: \n");
-        double costo =sc.nextDouble();
+        double precioCosto =sc.nextDouble();
+        System.out.print("Ingrese el precio venta del producto: \n");
+        double precioVenta =sc.nextDouble();
+        double gananciaProducto = precioVenta - precioCosto;
+        System.out.print("ver ganancia producto: \n" + gananciaProducto);
         System.out.print("Ingrese la cantidad de producto: \n");
         int existenciaProducto =sc.nextInt();
-
-
-        double ganancia = precio - costo;
-        System.out.print("ver ganancia producto: \n" + ganancia);
 
 
 
@@ -36,17 +34,14 @@ public class ProductoService {
         ProductoDao.verGananciaProductoDB();
         System.out.println(verGananciaProducto());*/
 
-
-
-
         Producto registro = new Producto();
         registro.setIdProducto(idProducto);
-        registro.setNombreProducto(nombre);
-        registro.setDescripcionProducto(descripcion);
-        registro.setPrecioVentaProducto(precio);
-        registro.setPrecioCostoProducto(costo);
+        registro.setNombreProducto(nombreProducto);
+        registro.setDescripcionProducto(descripcionProducto);
+        registro.setPrecioVentaProducto(precioVenta);
+        registro.setPrecioCostoProducto(precioCosto);
+        registro.setGananciaProducto(gananciaProducto);
         registro.setExistenciaProducto(existenciaProducto);
-        registro.setGananciaProducto(ganancia);
 
         ProductoDao.crearProductoDB(registro);
     }

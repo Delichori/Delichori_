@@ -6,14 +6,13 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import co.com.delichori.model.Pedido;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PedidoPdf {
+public class PedidoPdfDao {
 
     public static void generarPdf(Pedido pedido, String rutaArchivo) {
 
@@ -27,7 +26,9 @@ public class PedidoPdf {
             ResultSet rs = null;
 
             try (Connection connect = Conexion.get_connetion()) {
+
                 String query = "SELECT * FROM pedido where pedido.cedulaCliente = cedulaCliente";
+
 
                 ps = connect.prepareStatement(query);
                 rs = ps.executeQuery();
@@ -40,7 +41,7 @@ public class PedidoPdf {
                     document.add(new Paragraph("Nombre Cliente: " + rs.getString("nombreCliente")));
                     document.add(new Paragraph("Apellido Cliente: " + rs.getString("apellidoCliente")));
                     document.add(new Paragraph("Direccion Cliente: " + rs.getString("direccionCliente")));
-                    document.add(new Paragraph("Id Producto: " +rs.getInt("idProducto")));
+                    document.add(new Paragraph("Id Producto: " + rs.getInt("idProducto")));
                     document.add(new Paragraph("Cantidad del producto: " + rs.getInt("cantidadProducto")));
                     document.add(new Paragraph("Fecha Actual: " + rs.getDate("fechaPedido")));
                     document.add(new Paragraph("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO"));
@@ -70,6 +71,8 @@ public class PedidoPdf {
         Pedido pedido = new Pedido();
         String rutaArchivo = "D:/pedido.pdf"; // Ruta donde se guardará el archivo PDF
         generarPdf(pedido, rutaArchivo);
+
+
     }
 }
 
