@@ -2,7 +2,12 @@ package co.com.delichori.dao;
 
 import co.com.delichori.conexion.Conexion;
 import co.com.delichori.model.Pedido;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
 
 public class PedidoDao {
@@ -189,6 +194,59 @@ public class PedidoDao {
             System.out.println(e);
         }finally {
             Conexion.close_connection();
+        }
+    }
+
+    public static void generarPdf(int idPedido, String rutaArchivo, int cedulaCliente) {
+
+
+        try {
+            PdfWriter writer = new PdfWriter(rutaArchivo);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try (Connection connect = Conexion.get_connetion()) {
+
+              // String query = ("select * from pedido where cedulaCliente="+ cedulaCliente "and idPedido= " + idPedido);
+                String query =("select * from pedido where idPedido= idPedido and cedulaCliente=" + cedulaCliente);
+
+
+                ps = connect.prepareStatement(query);
+                rs = ps.executeQuery();
+
+
+                while (rs.next()) {
+                    System.out.println("\n");
+                    document.add(new Paragraph("Pedido ID: " + rs.getInt("idPedido")));
+                    document.add(new Paragraph("Cédula Cliente: " + rs.getInt("cedulaCliente")));
+                    document.add(new Paragraph("Nombre Cliente: " + rs.getString("nombreCliente")));
+                    document.add(new Paragraph("Apellido Cliente: " + rs.getString("apellidoCliente")));
+                    document.add(new Paragraph("Direccion Cliente: " + rs.getString("direccionCliente")));
+                    document.add(new Paragraph("Id Producto: " + rs.getInt("idProducto")));
+                    document.add(new Paragraph("Cantidad del producto: " + rs.getInt("cantidadProducto")));
+                    document.add(new Paragraph("Fecha Actual: " + rs.getDate("fechaPedido")));
+                    document.add(new Paragraph("SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO"));
+                    document.add(new Paragraph("Valor Total Pedido: " + rs.getDouble("valorTotalPedido")));
+
+
+                }
+
+            } catch (SQLException e) {
+
+                System.out.println("No se recuperaron registros ");
+                System.out.println(e);
+            } finally {
+                Conexion.close_connection();
+            }
+
+            document.close();
+
+            System.out.println("PDF generado correctamente en: " + rutaArchivo);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error al generar el PDF: " + e.getMessage());
         }
     }
 

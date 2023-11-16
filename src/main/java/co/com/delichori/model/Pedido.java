@@ -14,6 +14,7 @@ public class Pedido {
     private String estadoPedido;
     private int cantidadProducto;
     private LocalDate fechaPedido;
+    private double precioUnidad;
     private double valorTotalPedido;
     private int opc;
 
@@ -36,6 +37,14 @@ public class Pedido {
         this.fechaPedido = fechaPedido;
         this.valorTotalPedido = valorTotalPedido;
         this.opc = opc;
+    }
+
+    public double getPrecioUnidad() {
+        return precioUnidad;
+    }
+
+    public void setPrecioUnidad(double precioUnidad) {
+        this.precioUnidad = precioUnidad;
     }
 
     public int getIdPedido() {

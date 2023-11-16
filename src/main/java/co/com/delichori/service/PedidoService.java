@@ -1,9 +1,9 @@
 package co.com.delichori.service;
 
 import co.com.delichori.dao.PedidoDao;
-import co.com.delichori.dao.PedidoPdfDao;
 import co.com.delichori.dao.ProductoDao;
 import co.com.delichori.model.Pedido;
+import co.com.delichori.model.Producto;
 
 
 import java.time.LocalDate;
@@ -50,10 +50,10 @@ public class PedidoService {
         System.out.println(fechaActual + "\n");
 
         System.out.println("\n SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
-        double precioUnidad = 4000;
-        double total = cantidad * precioUnidad;
 
-        System.out.println("El valor Total del Pedido es: \n"+total+ "\n");
+        double precioUnidad = 4000;
+       double total = cantidad * precioUnidad;
+       System.out.println("El valor Total del Pedido es: \n"+total+ "\n");
 
 
         Pedido registro = new Pedido();
@@ -85,11 +85,14 @@ public class PedidoService {
         PedidoDao.verPedidoClienteDB(cedulaCliente);
     }
 
-    /*public static void imprimirPedido(){
-        System.out.println("Digíte su cédula: ");
-        int cedulaCliente = sc.nextInt();
-        PedidoPdfDao.generarPdf("Pedido pedido", "String rutaArchivo", "int cedulaCliente");
-    }*/
+    public static void imprimirPedido(){
+        String rutaArchivo = "D:/pedido.pdf";
+        System.out.println("Ingrese cédula para imprimir");
+        int cedulaCliente= sc.nextInt();
+        System.out.println("Ingrese el idPedido: ");
+        int idPedido = sc.nextInt();
+        PedidoDao.generarPdf(idPedido, rutaArchivo, cedulaCliente);
+    }
 
 
 

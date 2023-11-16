@@ -11,11 +11,11 @@ import java.sql.SQLException;
 public class ProductoDao {
 
 
-    public  static void crearProductoDB(Producto registro ){
+    public static void crearProductoDB(Producto registro) {
 
-        try(Connection conexion = Conexion.get_connetion()){
+        try (Connection conexion = Conexion.get_connetion()) {
 
-            PreparedStatement ps =null;
+            PreparedStatement ps = null;
 
             try {
 
@@ -23,11 +23,11 @@ public class ProductoDao {
 
                 ps = conexion.prepareStatement(query);
 
-                ps.setInt(1,registro.getIdProducto());
-                ps.setString(2,registro.getNombreProducto());
-                ps.setString(3,registro.getDescripcionProducto());
-                ps.setDouble(4,registro.getPrecioVentaProducto());
-                ps.setDouble(5,registro.getPrecioCostoProducto());
+                ps.setInt(1, registro.getIdProducto());
+                ps.setString(2, registro.getNombreProducto());
+                ps.setString(3, registro.getDescripcionProducto());
+                ps.setDouble(4, registro.getPrecioVentaProducto());
+                ps.setDouble(5, registro.getPrecioCostoProducto());
                 ps.setDouble(6, registro.getExistenciaProducto());
                 ps.setDouble(7, registro.getGananciaProducto());
 
@@ -35,48 +35,48 @@ public class ProductoDao {
 
                 System.out.println("Registro de producto exitoso ");
 
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 System.out.println(e);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
 
             System.out.println(e);
-        }finally {
+        } finally {
             Conexion.close_connection();
         }
     }
 
-    public static void verProductoDB(){
+    public static void verProductoDB() {
         //manda
-        PreparedStatement ps= null;
+        PreparedStatement ps = null;
         //trae el resultado de la consulta
-        ResultSet rs =null;
+        ResultSet rs = null;
 
-        try(Connection connect = Conexion.get_connetion()){
+        try (Connection connect = Conexion.get_connetion()) {
 
             String query = "SELECT * FROM producto";
 
             ps = connect.prepareStatement(query);//manda
             rs = ps.executeQuery();//recibe
 
-            while (rs.next()){
+            while (rs.next()) {
 
                 System.out.println("\n");
-                System.out.println("Id producto: "+ rs.getInt("idProducto"));
+                System.out.println("Id producto: " + rs.getInt("idProducto"));
                 System.out.println("Nombre del producto: " + rs.getString("nombreProducto"));
                 System.out.println("Descripcion del producto: " + rs.getString("descripcionProducto"));
                 System.out.println("Precio venta del producto: " + rs.getDouble("precioVenta"));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("No se recuperaron registros ");
             System.out.println(e);
-        }finally {
+        } finally {
             Conexion.close_connection();
         }
     }
 
-    public  static  void  actualizarProductoDB(Producto update ){
-        try(Connection connect = Conexion.get_connetion()){
+    public static void actualizarProductoDB(Producto update) {
+        try (Connection connect = Conexion.get_connetion()) {
 
             PreparedStatement ps = null;
 
@@ -97,7 +97,7 @@ public class ProductoDao {
 
                     System.out.println("Actualización exitosa");
 
-                }else if (opc == 2){
+                } else if (opc == 2) {
 
                     String query = "UPDATE producto SET descripcionProducto=? WHERE idProducto = ?";
 
@@ -108,7 +108,7 @@ public class ProductoDao {
 
                     System.out.println("Actualización exitosa");
 
-                }else if (opc ==3){
+                } else if (opc == 3) {
 
                     String query = "UPDATE producto SET precioVenta=? WHERE idProducto = ?";
 
@@ -119,7 +119,7 @@ public class ProductoDao {
 
                     System.out.println("Actualización exitosa");
 
-                }else if (opc == 4){
+                } else if (opc == 4) {
 
                     String query = "UPDATE producto SET precioCosto=? WHERE idProducto = ?";
 
@@ -130,7 +130,7 @@ public class ProductoDao {
 
                     System.out.println("Actualización exitosa");
 
-                }else if (opc ==5){
+                } else if (opc == 5) {
 
                     String query = "UPDATE producto SET existenciaProducto=? WHERE idProducto = ?";
 
@@ -141,26 +141,26 @@ public class ProductoDao {
 
                     System.out.println("Actualización exitosa");
 
-                }else{
+                } else {
 
                     System.out.println("La opción no es válida");
 
                 }
 
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 System.out.println("No fue posible actualizar el registro");
                 System.out.println(e);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
-        }finally { //Sin importar si el try falla o no el finally se ejecuta
+        } finally { //Sin importar si el try falla o no el finally se ejecuta
             Conexion.close_connection();
         }
     }
 
-    public static void eliminarProductoDB(int idProducto){
+    public static void eliminarProductoDB(int idProducto) {
 
-        try(Connection connect = Conexion.get_connetion()){
+        try (Connection connect = Conexion.get_connetion()) {
 
             PreparedStatement ps = null;
 
@@ -170,32 +170,32 @@ public class ProductoDao {
                 ps.setInt(1, idProducto);
                 ps.executeUpdate();
                 System.out.println("El registro ha sido eliminado correctamente");
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 System.out.println("No se eliminó el registro");
                 System.out.println(e);
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
-        }finally { //Sin importar si el try falla o no el finally se ejecuta
+        } finally { //Sin importar si el try falla o no el finally se ejecuta
             Conexion.close_connection();
         }
     }
 
-    public static void verGananciaProductoDB(){
+    public static void verGananciaProductoDB() {
         //manda
-        PreparedStatement ps= null;
+        PreparedStatement ps = null;
         //trae el resultado de la consulta
-        ResultSet rs =null;
+        ResultSet rs = null;
 
-        try(Connection connect = Conexion.get_connetion()){
+        try (Connection connect = Conexion.get_connetion()) {
 
             String query = "SELECT * FROM producto";
 
             ps = connect.prepareStatement(query);//manda
             rs = ps.executeQuery();//recibe
 
-            while (rs.next()){
+            while (rs.next()) {
 
                 Producto ganancia = new Producto();
 
@@ -203,17 +203,49 @@ public class ProductoDao {
                 System.out.println("Precio venta del producto: " + rs.getDouble("precioVenta"));
                 System.out.println("Precio costo del producto: " + rs.getDouble("precioCosto"));
 
-                double gananciaProducto = (ganancia.getPrecioVentaProducto() - ganancia.getPrecioCostoProducto());
-                ganancia.setGananciaProducto(gananciaProducto);
-
-                System.out.println("La ganancia del producto es: " + gananciaProducto);
+                System.out.println("La ganancia del producto es: " + (rs.getDouble("precioVenta") - rs.getDouble("precioCosto")));
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("No se recuperaron registros ");
             System.out.println(e);
-        }finally {
+        } finally {
             Conexion.close_connection();
         }
     }
+
+    /*public static void verValorPedido() {
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try (Connection connect = Conexion.get_connetion()) {
+
+            String query = ("SELECT * FROM producto where idProducto = idProducto");
+
+            ps = connect.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                double valor =  rs.getDouble("precioVenta");
+                System.out.println("carreta:"+valor);
+                ps = connect.prepareStatement(query);
+                ps.setDouble(10, valor);
+                ps.executeUpdate();
+
+
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("No se recuperaron registros ");
+            System.out.println(e);
+        } finally {
+            Conexion.close_connection();
+        }
+
+
+
+    }*/
 }

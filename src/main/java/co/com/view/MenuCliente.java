@@ -1,6 +1,5 @@
 package co.com.view;
 
-import co.com.delichori.dao.PedidoDao;
 import co.com.delichori.service.PedidoService;
 import co.com.delichori.service.ProductoService;
 
@@ -38,10 +37,10 @@ public class MenuCliente {
                     System.out.println("Ver pedido Cliente");
                     PedidoService.verPedidoCliente();
                     break;
-                /*case 4:
+                case 4:
                     System.out.println("Imprimir PDF");
                     PedidoService.imprimirPedido();
-                    break;*/
+                    break;
                 case 5:
                     System.out.println("Salir");
                     init = 0;
