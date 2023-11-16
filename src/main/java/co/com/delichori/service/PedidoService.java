@@ -51,8 +51,7 @@ public class PedidoService {
 
         System.out.println("\n SU PEDIDO SERÁ ENTREGADO EN LOS SIGUIENTES TRES DÍAS CALENDARIO");
 
-        double precioUnidad = 4000;
-       double total = cantidad * precioUnidad;
+       double total = cantidad * ProductoDao.traerPrecioVenta(idProducto);
        System.out.println("El valor Total del Pedido es: \n"+total+ "\n");
 
 

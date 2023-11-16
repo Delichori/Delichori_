@@ -214,10 +214,11 @@ public class ProductoDao {
         }
     }
 
-    /*public static void verValorPedido() {
+    public static double traerPrecioVenta(int idProducto) {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
+        double valor =0;
 
         try (Connection connect = Conexion.get_connetion()) {
 
@@ -228,12 +229,7 @@ public class ProductoDao {
 
             while (rs.next()) {
 
-                double valor =  rs.getDouble("precioVenta");
-                System.out.println("carreta:"+valor);
-                ps = connect.prepareStatement(query);
-                ps.setDouble(10, valor);
-                ps.executeUpdate();
-
+                valor =  rs.getDouble("precioVenta");
 
             }
 
@@ -245,7 +241,6 @@ public class ProductoDao {
             Conexion.close_connection();
         }
 
-
-
-    }*/
+        return valor;
+    }
 }
