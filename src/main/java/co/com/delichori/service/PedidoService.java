@@ -126,7 +126,7 @@ public class PedidoService {
 
         System.out.println("Indique el id del pedido a cancelar: ");
         int idPedido = sc.nextInt();
-        ProductoDao.eliminarProductoDB(idPedido);
+        PedidoDao.cancelarPedidoDB(idPedido);
 
 
     }
